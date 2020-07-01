@@ -1,32 +1,32 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-const styles = {
-  text: {
-    textAlign: "center",
-  },
+// const styles = {
+//   text: {
+//     textAlign: "center",
+//   },
 
-  jetImage1: {
-    display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  jetskiImage: {
-    with: "150px",
-    height: "150px",
-  },
-  jetskiList: {
-    alignItem: "center",
-    justifyContent: "center",
-    display: "flex",
-  },
-  jetskiMargin: {
-    margin: "20px",
-  },
-};
+//   jetImage1: {
+//     display: "block",
+//     marginLeft: "auto",
+//     marginRight: "auto",
+//   },
+//   jetskiImage: {
+//     with: "150px",
+//     height: "150px",
+//   },
+//   jetskiList: {
+//     alignItem: "center",
+//     justifyContent: "center",
+//     display: "flex",
+//   },
+//   jetskiMargin: {
+//     margin: "20px",
+//   },
+// };
 
 const Title = styled.h1`
   text-align: center;
-  color: blue;
+  color: ${(props) => props.theme.blue};
 `;
 
 const Description = styled.h3`
@@ -34,14 +34,14 @@ const Description = styled.h3`
   color: grey;
 `;
 
-const jetImage = styled.img`
+const JetImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
 `;
 
 const ListWrap = styled.div`
-  align-item: center;
+  align-items: center;
   justify-content: center;
   display: flex;
 `;
@@ -55,14 +55,43 @@ height: 200px;
 }
 
 p{
-    taxt-align: Left;
+    taxt-align: Center;
 
     &.jet-a{
-        color: red;
-    }
+        color: ${(props) => props.theme.blue};
 }
 `;
 
-export { Description, Title, jetImage, ListWrap, JetsWrap };
+const GlobalStyle = createGlobalStyle`
+body{ 
+    color : ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.backgroundColor};
+    text-align: center;
+}
+`;
 
-export default styles;
+const ThemeButton = styled.button`
+  font-size: 1em;
+  margin: 1.25em;
+  border-radius: 3px;
+  bachground-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.backgroundColor};
+  text-align: left;
+`;
+
+const DeleteButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+`;
+
+export {
+  Description,
+  Title,
+  JetImage,
+  ListWrap,
+  JetsWrap,
+  GlobalStyle,
+  ThemeButton,
+  DeleteButtonStyled,
+};
+
+// export default styles;

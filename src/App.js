@@ -1,53 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 
 import JetskiList from "./components/JetskiList";
 
 //import jetskis from "./jetskis";
 
-import styles from "./styles";
+// import styles from "./styles";
+import { ThemeProvider } from "styled-components";
 
-import { Description, Title, jetImage } from "./styles";
+import {
+  Description,
+  Title,
+  JetImage,
+  GlobalStyle,
+  ThemeButton,
+} from "./styles";
 
-// import styled from "styled-components";
+const theme = {
+  dark: {
+    mainColor: "yellow",
+    backgroundColor: "#f3b380",
+    blue: "blue",
+    red: "red",
+  },
+  light: {
+    mainColor: "#f3b380",
+    backgroundColor: "yellow",
+    blue: "blue",
+    red: "red",
+  },
+};
 
-// const Title = styled.h1`
-//   text-align: center;
-//   color: blue;
-// `;
-
-// const Description = styled.h3`
-//   text-align: center;
-//   color: grey;
-// `;
-
-// const jetImage = styled.img`
-//   display: block;
-//   margin-left: auto;
-//   margin-right: auto;
-// `;
+// {
+//   mainColor: "yellow",
+//   backgroundColor: "#f3b380",
+//   blue: "blue",
+// };
 
 function App() {
+  const [backTheme, setBackTheme] = useState("light");
+
+  const handleTheme = () =>
+    setBackTheme(backTheme === "light" ? "dark" : "light");
+
+  const buttonText = backTheme === "light" ? "Darke Mode" : "Light Mode";
+
   return (
-    <div>
+    // <ThemeProvider theme={backTheme === "light" ? theme.light : theme.dark}>
+    <ThemeProvider theme={theme[backTheme]}>
+      <GlobalStyle />
+      <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton>
+
       <div>
         <Title> Jet Ski</Title>
         <Description>Top of the line Jet Ski</Description>
-        <jetImage
+        <JetImage
           src="https://i.pinimg.com/474x/85/f9/59/85f959846423744530c10374699535b1--jet-ski-wallpaper-desktop.jpg"
           alt="jet store"
-          style={styles.jetImage}
         />
-        {/* <img
-          src="https://i.pinimg.com/474x/85/f9/59/85f959846423744530c10374699535b1--jet-ski-wallpaper-desktop.jpg"
-          alt="jet store"
-          style={styles.jetImage}
-        /> */}
       </div>
 
-      <div style={styles.jetskiList}>
-        <JetskiList />
-      </div>
-    </div>
+      <JetskiList />
+    </ThemeProvider>
   );
 }
 

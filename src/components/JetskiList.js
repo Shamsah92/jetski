@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import styles from "../styles";
 
@@ -9,8 +9,16 @@ import JetskiItem from "./JetskiItem";
 import { ListWrap } from "../styles";
 
 const JetskiList = () => {
-  const jetskiList = jetskis.map((jetski) => (
-    <JetskiItem jetski={jetski} key={jetski.id} />
+  const [_jetskis, setJetskis] = useState(jetskis);
+
+  const deleteJetski = (jetskiId) => {
+    const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
+    setJetskis(updateJestskis);
+    console.log(`please delete jetski #${jetskiId}`);
+  };
+
+  const jetskiList = _jetskis.map((jetski) => (
+    <JetskiItem jetski={jetski} deleteJetski={deleteJetski} key={jetski.id} />
   ));
 
   //   const cookie = {
