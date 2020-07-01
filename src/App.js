@@ -6,12 +6,25 @@ import JetskiList from "./components/JetskiList";
 
 import styles from "./styles";
 
+import styled from "styled-components";
+
+const Title = styled.h1`
+  text-align: center;
+  color: blue;
+`;
+
+const Description = styled.h3`
+  text-align: center;
+  color: grey;
+`;
+
 function App() {
   return (
     <div>
       <div>
-        <h1 style={styles.text}>jet ski</h1>;
-        <h3 style={styles.text}>Top of the line jet ski</h3>;
+        <Title> Jet Ski</Title>
+        <Description>Top of the line Jet Ski</Description>
+
         <img
           src="https://i.pinimg.com/474x/85/f9/59/85f959846423744530c10374699535b1--jet-ski-wallpaper-desktop.jpg"
           alt="jet store"
