@@ -1,10 +1,12 @@
 import React from "react";
 
-import styles from "../styles";
+// import styles from "../styles";
 
 import jetskis from "../jetskis";
 
 import JetskiItem from "./JetskiItem";
+
+import { ListWrap } from "../styles";
 
 const JetskiList = () => {
   const jetskiList = jetskis.map((jetski) => (
@@ -17,7 +19,7 @@ const JetskiList = () => {
   //       image: "https://c2.peakpx.com/wallpaper/644/448/912/jet-ski-personal-watercraft-jet-boat-wallpaper-preview.jpg",
   //   };
 
-  return <div style={styles.jetskiList}>{jetskiList}</div>;
+  return <ListWrap>{jetskiList}</ListWrap>;
 };
 
 export default JetskiList;

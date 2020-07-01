@@ -1,18 +1,20 @@
 import React from "react";
 
-import styles from "../styles";
+// import styles from "../styles";
+
+import { JetsWrap } from "../styles";
 
 const JetskiItem = (props) => {
   return (
-    <div style={styles.jetskiMargin}>
+    <JetsWrap>
       <img
         src={props.jetski.image}
         alt={props.jetski.name}
-        style={styles.jetskiImage}
+        // style={styles.jetskiImage}
       />
-      <p style={styles.text}> {props.jetski.name} </p>
-      <p style={styles.text}> {props.jetski.price} KD</p>
-    </div>
+      <p> {props.jetski.name} </p>
+      <p className="jet-a"> {props.jetski.price} KD</p>
+    </JetsWrap>
   );
 };
 
