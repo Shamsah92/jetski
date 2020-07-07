@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
+import JetskiDetail from "./components/JetskiDetail";
 import JetskiList from "./components/JetskiList";
 
-//import jetskis from "./jetskis";
-
-// import styles from "./styles";
+import jetskis from "./jetskis";
 import { ThemeProvider } from "styled-components";
 
 import {
@@ -30,22 +29,41 @@ const theme = {
   },
 };
 
-// {
-//   mainColor: "yellow",
-//   backgroundColor: "#f3b380",
-//   blue: "blue",
-// };
-
 function App() {
   const [backTheme, setBackTheme] = useState("light");
+
+  const [jetski, setJetski] = useState(null);
+
+  const [_jetskis, setJetskis] = useState(jetskis);
+
+  const deleteJetski = (jetskiId) => {
+    const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
+    setJetskis(updateJestskis);
+    setJetski(null);
+  };
+
+  const handleVisible = (jetskiId) => {
+    const chosenJetski = jetskis.find((jetski) => jetski.id === jetskiId);
+    setJetski(chosenJetski);
+  };
 
   const handleTheme = () =>
     setBackTheme(backTheme === "light" ? "dark" : "light");
 
   const buttonText = backTheme === "light" ? "Darke Mode" : "Light Mode";
 
+  const setView = () =>
+    jetski ? (
+      <JetskiDetail jetski={jetski} deleteJetski={deleteJetski} />
+    ) : (
+      <JetskiList
+        jetskis={_jetskis}
+        deleteJetski={deleteJetski}
+        handleVisible={handleVisible}
+      />
+    );
+
   return (
-    // <ThemeProvider theme={backTheme === "light" ? theme.light : theme.dark}>
     <ThemeProvider theme={theme[backTheme]}>
       <GlobalStyle />
       <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton>
@@ -59,7 +77,7 @@ function App() {
         />
       </div>
 
-      <JetskiList />
+      {setView()}
     </ThemeProvider>
   );
 }

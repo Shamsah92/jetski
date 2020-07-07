@@ -1,52 +1,28 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-// const styles = {
-//   text: {
-//     textAlign: "center",
-//   },
-
-//   jetImage1: {
-//     display: "block",
-//     marginLeft: "auto",
-//     marginRight: "auto",
-//   },
-//   jetskiImage: {
-//     with: "150px",
-//     height: "150px",
-//   },
-//   jetskiList: {
-//     alignItem: "center",
-//     justifyContent: "center",
-//     display: "flex",
-//   },
-//   jetskiMargin: {
-//     margin: "20px",
-//   },
-// };
-
-const Title = styled.h1`
+export const Title = styled.h1`
   text-align: center;
   color: ${(props) => props.theme.blue};
 `;
 
-const Description = styled.h3`
+export const Description = styled.h3`
   text-align: center;
   color: grey;
 `;
 
-const JetImage = styled.img`
+export const JetImage = styled.img`
   display: block;
   margin-left: auto;
   margin-right: auto;
 `;
 
-const ListWrap = styled.div`
+export const ListWrap = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
 `;
 
-const JetsWrap = styled.div`
+export const JetsWrap = styled.div`
   margin: 20px;
 
   img{
@@ -62,7 +38,14 @@ p{
 }
 `;
 
-const GlobalStyle = createGlobalStyle`
+export const DetailWrap = styled.div`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+`;
+
+export const GlobalStyle = createGlobalStyle`
 body{ 
     color : ${(props) => props.theme.mainColor};
     background-color: ${(props) => props.theme.backgroundColor};
@@ -70,7 +53,7 @@ body{
 }
 `;
 
-const ThemeButton = styled.button`
+export const ThemeButton = styled.button`
   font-size: 1em;
   margin: 1.25em;
   border-radius: 3px;
@@ -79,19 +62,14 @@ const ThemeButton = styled.button`
   text-align: left;
 `;
 
-const DeleteButtonStyled = styled.p`
+export const DeleteButtonStyled = styled.p`
   color: ${(props) => props.theme.red};
 `;
 
-export {
-  Description,
-  Title,
-  JetImage,
-  ListWrap,
-  JetsWrap,
-  GlobalStyle,
-  ThemeButton,
-  DeleteButtonStyled,
-};
-
-// export default styles;
+export const SearchBarStyled = styled.input`
+  color: ${(props) => props.theme.red};
+  font-size: 1em;
+  padding: 1rem;
+  margin: 2rem auto;
+  display: flex;
+`;

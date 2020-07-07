@@ -1,39 +1,33 @@
 import React, { useState } from "react";
 
-// import styles from "../styles";
-
-import jetskis from "../jetskis";
-
 import JetskiItem from "./JetskiItem";
 
 import { ListWrap } from "../styles";
 
-const JetskiList = () => {
-  const [_jetskis, setJetskis] = useState(jetskis);
+import SearchBar from "./SearchBar";
 
-  const deleteJetski = (jetskiId) => {
-    const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
-    setJetskis(updateJestskis);
-    console.log(`please delete jetski #${jetskiId}`);
-  };
+const JetskiList = (props) => {
+  const [query, setQuery] = useState("");
 
-  const jetskiList = _jetskis.map((jetski) => (
-    <JetskiItem jetski={jetski} deleteJetski={deleteJetski} key={jetski.id} />
-  ));
+  const jetskiList = props.jetskis
+    .filter((jetski) => jetski.name.includes(query))
+    .map((jetski) => (
+      <JetskiItem
+        jetski={jetski}
+        deleteJetski={props.deleteJetski}
+        handleVisible={props.handleVisible}
+        key={jetski.id}
+      />
+    ));
 
-  //   const cookie = {
-  //       name : "Jet Ski"
-  //       price: 1500,
-  //       image: "https://c2.peakpx.com/wallpaper/644/448/912/jet-ski-personal-watercraft-jet-boat-wallpaper-preview.jpg",
-  //   };
-
-  return <ListWrap>{jetskiList}</ListWrap>;
+  return (
+    <>
+      <ListWrap>
+        <SearchBar setQuery={setQuery} />
+        {jetskiList}
+      </ListWrap>
+    </>
+  );
 };
 
 export default JetskiList;
-
-// {/* <div style={styles.jetskiMargin} key={jetskis.id}>
-//       <img src={jetski.image} alt={jetski.name} style={styles.jetskiImage} />
-//       <p style={styles.text}> {jetski.name} </p>
-//       <p style={styles.text}> {jetski.price} KD</p>
-//     </div> */}
