@@ -10,7 +10,7 @@ const JetskiList = (props) => {
   const [query, setQuery] = useState("");
 
   const jetskiList = props.jetskis
-    .filter((jetski) => jetski.name.includes(query))
+    .filter((jetski) => jetski.name.toLowerCase().includes(query.toLowerCase()))
     .map((jetski) => (
       <JetskiItem
         jetski={jetski}

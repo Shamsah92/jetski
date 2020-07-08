@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 
+import { Route, Switch } from "react-router";
+
 import JetskiDetail from "./components/JetskiDetail";
 import JetskiList from "./components/JetskiList";
 
 import jetskis from "./jetskis";
 import { ThemeProvider } from "styled-components";
 
+import Home from "./components/Home";
+
+import { Link } from "react-router-dom";
+
 import {
-  Description,
-  Title,
-  JetImage,
+  // Description,
+  // Title,
+  // JetImage,
   GlobalStyle,
   ThemeButton,
 } from "./styles";
@@ -32,7 +38,7 @@ const theme = {
 function App() {
   const [backTheme, setBackTheme] = useState("light");
 
-  const [jetski, setJetski] = useState(null);
+  const [setJetski] = useState(null);
 
   const [_jetskis, setJetskis] = useState(jetskis);
 
@@ -52,32 +58,46 @@ function App() {
 
   const buttonText = backTheme === "light" ? "Darke Mode" : "Light Mode";
 
-  const setView = () =>
-    jetski ? (
-      <JetskiDetail jetski={jetski} deleteJetski={deleteJetski} />
-    ) : (
-      <JetskiList
-        jetskis={_jetskis}
-        deleteJetski={deleteJetski}
-        handleVisible={handleVisible}
-      />
-    );
+  // const setView = () =>
+  //   jetski ? (
+  //     <JetskiDetail jetski={jetski} />
+  //   ) : (
+  //     <JetskiList
+  //       jetskis={_jetskis}
+  //       deleteJetski={deleteJetski}
+  //       handleVisible={handleVisible}
+  //     />
+  //   );
 
   return (
     <ThemeProvider theme={theme[backTheme]}>
       <GlobalStyle />
+
+      <Link to="/jetskis" style={{ margin: 20, float: "right" }}>
+        {" "}
+        jetskis
+      </Link>
+
       <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton>
 
-      <div>
-        <Title> Jet Ski</Title>
-        <Description>Top of the line Jet Ski</Description>
-        <JetImage
-          src="https://i.pinimg.com/474x/85/f9/59/85f959846423744530c10374699535b1--jet-ski-wallpaper-desktop.jpg"
-          alt="jet store"
-        />
-      </div>
+      <Switch>
+        <Route path="/jetskis/:jetskiId">
+          <JetskiDetail jetskis={_jetskis} deleteJetski={deleteJetski} />
+        </Route>
 
-      {setView()}
+        <Route path="/jetskis">
+          <JetskiList
+            jetskis={_jetskis}
+            deleteJetski={deleteJetski}
+            handleVisible={handleVisible}
+          />
+        </Route>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+
+      {/* {setView()} */}
     </ThemeProvider>
   );
 }
