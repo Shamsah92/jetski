@@ -10,14 +10,19 @@ import { ThemeProvider } from "styled-components";
 
 import Home from "./components/Home";
 
-import { Link } from "react-router-dom";
+import NavBar from "./components/NavBar";
+
+// import { Link } from "react-router-dom";
+
+// import logo from "./logo.png";
 
 import {
   // Description,
   // Title,
   // JetImage,
   GlobalStyle,
-  ThemeButton,
+  // ThemeButton,
+  // Logo,
 } from "./styles";
 
 const theme = {
@@ -45,7 +50,6 @@ function App() {
   const deleteJetski = (jetskiId) => {
     const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
     setJetskis(updateJestskis);
-    setJetski(null);
   };
 
   const handleVisible = (jetskiId) => {
@@ -73,12 +77,17 @@ function App() {
     <ThemeProvider theme={theme[backTheme]}>
       <GlobalStyle />
 
+      <NavBar handleTheme={handleTheme} buttonText={buttonText} />
+      {/* <Logo to="/">
+        <img src={logo} width="70" />
+      </Logo>
+
       <Link to="/jetskis" style={{ margin: 20, float: "right" }}>
         {" "}
         jetskis
       </Link>
 
-      <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton>
+      <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton> */}
 
       <Switch>
         <Route path="/jetskis/:jetskiId">

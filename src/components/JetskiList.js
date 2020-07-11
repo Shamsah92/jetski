@@ -21,12 +21,13 @@ const JetskiList = (props) => {
     ));
 
   return (
-    <>
-      <ListWrap>
-        <SearchBar setQuery={setQuery} />
+    <div className="container">
+      <SearchBar setQuery={setQuery} />
+      <ListWrap className="row">
+        {/* <SearchBar setQuery={setQuery} /> */}
         {jetskiList}
       </ListWrap>
-    </>
+    </div>
   );
 };
 

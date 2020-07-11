@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+import { Link, NavLink } from "react-router-dom";
+
 export const Title = styled.h1`
   text-align: center;
   color: ${(props) => props.theme.blue};
@@ -55,7 +57,7 @@ body{
 
 export const ThemeButton = styled.button`
   font-size: 1em;
-  margin: 1.25em;
+  margin: 1em;
   border-radius: 3px;
   bachground-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.backgroundColor};
@@ -72,4 +74,21 @@ export const SearchBarStyled = styled.input`
   padding: 1rem;
   margin: 2rem auto;
   display: flex;
+`;
+
+export const Logo = styled(Link)`
+  padding: 0.55em;
+
+  img {
+    width: 6rem;
+  }
+`;
+
+export const NavItem = styled(NavLink)`
+  padding: 0.25em 1em;
+  color: ${(props) => props.theme.blue};
+
+  &.active {
+    color: ${(props) => props.theme.red};
+  }
 `;
