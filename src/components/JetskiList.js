@@ -6,16 +6,16 @@ import { ListWrap } from "../styles";
 
 import SearchBar from "./SearchBar";
 
-const JetskiList = (props) => {
+const JetskiList = ({ jetskis, deleteJetski, handleVisible }) => {
   const [query, setQuery] = useState("");
 
-  const jetskiList = props.jetskis
+  const jetskiList = jetskis
     .filter((jetski) => jetski.name.toLowerCase().includes(query.toLowerCase()))
     .map((jetski) => (
       <JetskiItem
         jetski={jetski}
-        deleteJetski={props.deleteJetski}
-        handleVisible={props.handleVisible}
+        deleteJetski={deleteJetski}
+        handleVisible={handleVisible}
         key={jetski.id}
       />
     ));
