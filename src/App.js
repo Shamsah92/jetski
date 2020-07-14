@@ -62,6 +62,14 @@ function App() {
 
   const buttonText = backTheme === "light" ? "Darke Mode" : "Light Mode";
 
+  const createJetski = (newJetski) => {
+    // const updatedJetskis = _jetskis;
+    // updatedJetskis.push(newJetski);
+    // setJetskis(updatedJetskis);
+
+    const updatedJetskis = [..._jetskis, newJetski];
+    setJetskis(updatedJetskis);
+  };
   // const setView = () =>
   //   jetski ? (
   //     <JetskiDetail jetski={jetski} />
@@ -99,6 +107,7 @@ function App() {
             jetskis={_jetskis}
             deleteJetski={deleteJetski}
             handleVisible={handleVisible}
+            createJetski={createJetski}
           />
         </Route>
         <Route exact path="/">

@@ -6,7 +6,12 @@ import { ListWrap } from "../styles";
 
 import SearchBar from "./SearchBar";
 
-const JetskiList = ({ jetskis, deleteJetski, handleVisible }) => {
+// import { BsPlusCircle } from "react-icons/bs";
+
+// import JetskiModal from "./modals/JetskiModal";
+import AddButton from "./Buttons/AddButton";
+
+const JetskiList = ({ jetskis, deleteJetski, handleVisible, createJetski }) => {
   const [query, setQuery] = useState("");
 
   const jetskiList = jetskis
@@ -23,10 +28,9 @@ const JetskiList = ({ jetskis, deleteJetski, handleVisible }) => {
   return (
     <div className="container">
       <SearchBar setQuery={setQuery} />
-      <ListWrap className="row">
-        {/* <SearchBar setQuery={setQuery} /> */}
-        {jetskiList}
-      </ListWrap>
+      <ListWrap className="row">{jetskiList}</ListWrap>
+
+      <AddButton createJetski={createJetski} />
     </div>
   );
 };

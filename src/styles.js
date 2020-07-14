@@ -92,3 +92,13 @@ export const NavItem = styled(NavLink)`
     color: ${(props) => props.theme.red};
   }
 `;
+
+export const CreateButtonStyled = styled.button`
+  color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.backgroundColor};
+
+  &:hover {
+    color: ${(props) => props.theme.red};
+    background-color: ${(props) => props.theme.blue};
+  }
+`;
