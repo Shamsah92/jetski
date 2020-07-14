@@ -12,6 +12,8 @@ import Home from "./components/Home";
 
 import NavBar from "./components/NavBar";
 
+import slugify from "react-slugify";
+
 // import { Link } from "react-router-dom";
 
 // import logo from "./logo.png";
@@ -66,6 +68,8 @@ function App() {
     // const updatedJetskis = _jetskis;
     // updatedJetskis.push(newJetski);
     // setJetskis(updatedJetskis);
+    newJetski.id = _jetskis[_jetskis.length - 1].id + 1;
+    newJetski.slug = slugify(newJetski.name);
 
     const updatedJetskis = [..._jetskis, newJetski];
     setJetskis(updatedJetskis);

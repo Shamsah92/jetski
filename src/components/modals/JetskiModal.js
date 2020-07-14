@@ -44,6 +44,8 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
           <div className="col-6">
             <label>Name</label>
             <input
+              required
+              name="name"
               type="text"
               className="form-control"
               onChange={handleChange}
@@ -52,6 +54,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
           <div className="col-6">
             <label>Price</label>
             <input
+              required
               name="name"
               type="number"
               min="500"
@@ -62,6 +65,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
         <div className="form-group">
           <label>Description</label>
           <input
+            required
             name="description"
             type="text"
             className="form-control"
@@ -71,6 +75,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
         <div className="form-group">
           <label>Image</label>
           <input
+            required
             name="image"
             type="text"
             className="form-control"

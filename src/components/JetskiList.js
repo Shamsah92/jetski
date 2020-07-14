@@ -11,6 +11,8 @@ import SearchBar from "./SearchBar";
 // import JetskiModal from "./modals/JetskiModal";
 import AddButton from "./Buttons/AddButton";
 
+import jetskiStore from "../stores/jetskiStore";
+
 const JetskiList = ({ jetskis, deleteJetski, handleVisible, createJetski }) => {
   const [query, setQuery] = useState("");
 
