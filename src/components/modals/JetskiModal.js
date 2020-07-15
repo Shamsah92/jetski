@@ -3,6 +3,8 @@ import Modal from "react-modal";
 
 import { CreateButtonStyled } from "../../styles";
 
+import jetskiStore from "../../stores/jetskiStore";
+
 const customStyle = {
   content: {
     top: "50%",
@@ -28,8 +30,8 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(jetski);
-    createJetski(jetski);
+    jetskiStore.createJetski(jetski);
+    closeModal();
   };
   return (
     <Modal

@@ -5,7 +5,7 @@ import DeleteButton from "./Buttons/DeleteButton";
 
 import { Link } from "react-router-dom";
 
-const JetskiItem = ({ jetski, deleteJetski }) => {
+const JetskiItem = ({ jetski }) => {
   // const jetski = props.jetski;
 
   return (
@@ -20,7 +20,7 @@ const JetskiItem = ({ jetski, deleteJetski }) => {
       <p> {jetski.name} </p>
       <p className="jet-a"> {jetski.price} KD</p>
 
-      <DeleteButton jetskiId={jetski.id} deleteJetski={deleteJetski} />
+      <DeleteButton jetskiId={jetski.id} />
     </JetsWrap>
   );
 };

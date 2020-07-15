@@ -13,16 +13,17 @@ import AddButton from "./Buttons/AddButton";
 
 import jetskiStore from "../stores/jetskiStore";
 
-const JetskiList = ({ jetskis, deleteJetski, handleVisible, createJetski }) => {
+import { observer } from "mobx-react";
+
+const JetskiList = ({ createJetski }) => {
   const [query, setQuery] = useState("");
 
-  const jetskiList = jetskis
+  const jetskiList = jetskiStore.jetskis
     .filter((jetski) => jetski.name.toLowerCase().includes(query.toLowerCase()))
     .map((jetski) => (
       <JetskiItem
         jetski={jetski}
-        deleteJetski={deleteJetski}
-        handleVisible={handleVisible}
+        // handleVisible={handleVisible}
         key={jetski.id}
       />
     ));
@@ -37,4 +38,4 @@ const JetskiList = ({ jetskis, deleteJetski, handleVisible, createJetski }) => {
   );
 };
 
-export default JetskiList;
+export default observer(JetskiList);

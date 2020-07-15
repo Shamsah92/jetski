@@ -49,10 +49,10 @@ function App() {
 
   const [_jetskis, setJetskis] = useState(jetskis);
 
-  const deleteJetski = (jetskiId) => {
-    const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
-    setJetskis(updateJestskis);
-  };
+  // const deleteJetski = (jetskiId) => {
+  //   const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
+  //   setJetskis(updateJestskis);
+  // };
 
   const handleVisible = (jetskiId) => {
     const chosenJetski = jetskis.find((jetski) => jetski.id === jetskiId);
@@ -103,13 +103,12 @@ function App() {
 
       <Switch>
         <Route path="/jetskis/:jetskiId">
-          <JetskiDetail jetskis={_jetskis} deleteJetski={deleteJetski} />
+          <JetskiDetail jetskis={_jetskis} />
         </Route>
 
         <Route path="/jetskis">
           <JetskiList
             jetskis={_jetskis}
-            deleteJetski={deleteJetski}
             handleVisible={handleVisible}
             createJetski={createJetski}
           />

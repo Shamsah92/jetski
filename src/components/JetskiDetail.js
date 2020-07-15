@@ -4,11 +4,15 @@ import { DetailWrap } from "../styles";
 import { Link, Redirect, useParams } from "react-router-dom";
 import DeleteButton from "./Buttons/DeleteButton";
 
-const JetskiDetail = ({ jetskis, deleteJetski }) => {
+import jetskiStore from "../stores/jetskiStore";
+
+import { observer } from "mobx-react";
+
+const JetskiDetail = () => {
   const { jetskiId } = useParams();
   // console.log("JetskiDetail -> jetskiId", jetskiId);
 
-  const jetski = jetskis.find((jetski) => jetski.id === +jetskiId);
+  const jetski = jetskiStore.jetskis.find((jetski) => jetski.id === +jetskiId);
 
   // const handleDelete = () => {
   //   props.deleteJetski(jetski.id);
@@ -27,10 +31,10 @@ const JetskiDetail = ({ jetskis, deleteJetski }) => {
         <p>{jetski.price}</p>
         {/* <DeleteButtonStyled onClick={handleDelete}>Delete</DeleteButtonStyled> */}
 
-        <DeleteButton jetskiId={jetski.id} deleteJetski={deleteJetski} />
+        <DeleteButton jetskiId={jetski.id} />
       </Link>
     </DetailWrap>
   );
 };
 
-export default JetskiDetail;
+export default observer(JetskiDetail);
