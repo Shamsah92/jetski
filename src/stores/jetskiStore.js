@@ -19,6 +19,10 @@ class JetskiStore {
     // setJetskis(updatedJetskis);
   };
 
+  updateJetski = (updatedJetski) => {
+    console.log("JetskiStore -> updateJetski -> updatedJetski", updatedJetski);
+  };
+
   deleteJetski = (jetskiId) => {
     this.jestskis = jetskis.filter((jetski) => jetski.id !== jetskiId);
     // setJetskis(updateJestskis);

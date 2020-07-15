@@ -102,3 +102,7 @@ export const CreateButtonStyled = styled.button`
     background-color: ${(props) => props.theme.blue};
   }
 `;
+
+export const UpdateButtonStyled = styled.p`
+  color: ${(props) => props.theme.red};
+`;

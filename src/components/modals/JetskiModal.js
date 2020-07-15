@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import { CreateButtonStyled } from "../../styles";
 
 import jetskiStore from "../../stores/jetskiStore";
+// import JetskiItem from "../JetskiItem";
 
 const customStyle = {
   content: {
@@ -16,13 +17,15 @@ const customStyle = {
   },
 };
 
-const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
-  const [jetski, setJetski] = useState({
-    name: "",
-    price: 0,
-    description: "",
-    image: "",
-  });
+const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
+  const [jetski, setJetski] = useState(
+    oldJetski || {
+      name: "",
+      price: 0,
+      description: "",
+      image: "",
+    }
+  );
 
   const handleChange = (event) => {
     setJetski({ ...jetski, [event.target.name]: event.target.value });
@@ -51,6 +54,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
               type="text"
               className="form-control"
               onChange={handleChange}
+              value={jetski.name}
             />
           </div>
           <div className="col-6">
@@ -61,6 +65,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
               type="number"
               min="500"
               className="form-control"
+              value={jetski.price}
             />
           </div>
         </div>
@@ -72,6 +77,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
             type="text"
             className="form-control"
             onChange={handleChange}
+            value={jetski.description}
           />
         </div>
         <div className="form-group">
@@ -82,6 +88,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski }) => {
             type="text"
             className="form-control"
             onChange={handleChange}
+            value={jetski.image}
           />
         </div>
         <CreateButtonStyled className="btn float-right">
