@@ -21,14 +21,27 @@ class JetskiStore {
 
   updateJetski = (updatedJetski) => {
     console.log("JetskiStore -> updateJetski -> updatedJetski", updatedJetski);
+    const jetski = this.jetskis.find(
+      (jetski) => jetski.id === updatedJetski.id
+    );
+
+    // jetski.name = updatedJetski.name;
+    // jetski.price = updatedJetski.price;
+    // jetski.image = updatedJetski.image;
+    // jetski.description = updatedJetski.description;
+
+    for (const key in jetski) jetski[key] = updatedJetski[key];
+
+    console.log("JetskiStore -> updateJetski -> this.jetskis", this.jetskis);
   };
 
   deleteJetski = (jetskiId) => {
     this.jestskis = jetskis.filter((jetski) => jetski.id !== jetskiId);
+    console.log("JetskiStore -> deleteJetski -> this.jetskis", this.jetskis);
     // setJetskis(updateJestskis);
   };
+  // };
 }
-
 decorate(JetskiStore, {
   jetskis: observable,
 });

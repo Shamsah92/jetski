@@ -6,6 +6,8 @@ import DeleteButton from "./Buttons/DeleteButton";
 import { Link } from "react-router-dom";
 import UpdateButton from "./Buttons/UpdateButton";
 
+import { observer } from "mobx-react";
+
 const JetskiItem = ({ jetski }) => {
   // const jetski = props.jetski;
 
@@ -26,4 +28,4 @@ const JetskiItem = ({ jetski }) => {
   );
 };
 
-export default JetskiItem;
+export default observer(JetskiItem);

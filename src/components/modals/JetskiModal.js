@@ -33,9 +33,15 @@ const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    jetskiStore.createJetski(jetski);
+
+    jetskiStore[oldJetski ? "updateJetski" : "createJetski"](jetski);
+
     closeModal();
   };
+
+  //   jetskiStore.createJetski(jetski);
+  //   closeModal();
+  // };
   return (
     <Modal
       isOpen={isOpen}
@@ -92,7 +98,7 @@ const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
           />
         </div>
         <CreateButtonStyled className="btn float-right">
-          Create
+          {oldJetski ? "Update" : "Create"}
         </CreateButtonStyled>
       </form>
     </Modal>
