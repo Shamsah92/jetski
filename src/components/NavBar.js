@@ -2,15 +2,7 @@ import React from "react";
 
 import logo from "../logo.png";
 
-import {
-  // Description,
-  // Title,
-  // JetImage,
-  // GlobalStyle,
-  ThemeButton,
-  Logo,
-  NavItem,
-} from "../styles";
+import { ThemeButton, Logo, NavItem } from "../styles";
 
 const NavBar = (props) => {
   return (

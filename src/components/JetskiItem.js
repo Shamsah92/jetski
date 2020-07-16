@@ -9,16 +9,10 @@ import UpdateButton from "./Buttons/UpdateButton";
 import { observer } from "mobx-react";
 
 const JetskiItem = ({ jetski }) => {
-  // const jetski = props.jetski;
-
   return (
     <JetsWrap>
       <Link to={`/jetskis/${jetski.id}`}>
-        <img
-          src={jetski.image}
-          alt={jetski.name}
-          // onClick={() => props.handleVisible(jetski.id)}
-        />
+        <img src={jetski.image} alt={jetski.name} />
       </Link>
       <p> {jetski.name} </p>
       <p className="jet-a"> {jetski.price} KD</p>

@@ -20,13 +20,7 @@ const JetskiList = ({ createJetski }) => {
 
   const jetskiList = jetskiStore.jetskis
     .filter((jetski) => jetski.name.toLowerCase().includes(query.toLowerCase()))
-    .map((jetski) => (
-      <JetskiItem
-        jetski={jetski}
-        // handleVisible={handleVisible}
-        key={jetski.id}
-      />
-    ));
+    .map((jetski) => <JetskiItem jetski={jetski} key={jetski.id} />);
 
   return (
     <div className="container">

@@ -8,15 +8,9 @@ class JetskiStore {
   jetskis = jetskis;
 
   createJetski = (newJetski) => {
-    // const updatedJetskis = _jetskis;
-    // updatedJetskis.push(newJetski);
-    // setJetskis(updatedJetskis);
     newJetski.id = this.jetskis[this.jetskis.length - 1].id + 1;
     newJetski.slug = slugify(newJetski.name);
     this.jetskis.push(newJetski);
-
-    // const updatedJetskis = [..._jetskis, newJetski];
-    // setJetskis(updatedJetskis);
   };
 
   updateJetski = (updatedJetski) => {
@@ -25,10 +19,10 @@ class JetskiStore {
       (jetski) => jetski.id === updatedJetski.id
     );
 
-    // jetski.name = updatedJetski.name;
-    // jetski.price = updatedJetski.price;
-    // jetski.image = updatedJetski.image;
-    // jetski.description = updatedJetski.description;
+    jetski.name = updatedJetski.name;
+    jetski.price = updatedJetski.price;
+    jetski.image = updatedJetski.image;
+    jetski.description = updatedJetski.description;
 
     for (const key in jetski) jetski[key] = updatedJetski[key];
 
@@ -36,9 +30,7 @@ class JetskiStore {
   };
 
   deleteJetski = (jetskiId) => {
-    this.jestskis = jetskis.filter((jetski) => jetski.id !== jetskiId);
-    console.log("JetskiStore -> deleteJetski -> this.jetskis", this.jetskis);
-    // setJetskis(updateJestskis);
+    this.jetskis = this.jetskis.filter((jetski) => jetski.id !== jetskiId);
   };
   // };
 }

@@ -4,7 +4,6 @@ import Modal from "react-modal";
 import { CreateButtonStyled } from "../../styles";
 
 import jetskiStore from "../../stores/jetskiStore";
-// import JetskiItem from "../JetskiItem";
 
 const customStyle = {
   content: {
@@ -17,7 +16,7 @@ const customStyle = {
   },
 };
 
-const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
+const JetskiModal = ({ isOpen, closeModal, oldJetski }) => {
   const [jetski, setJetski] = useState(
     oldJetski || {
       name: "",
@@ -39,9 +38,6 @@ const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
     closeModal();
   };
 
-  //   jetskiStore.createJetski(jetski);
-  //   closeModal();
-  // };
   return (
     <Modal
       isOpen={isOpen}
@@ -66,11 +62,11 @@ const JetskiModal = ({ isOpen, closeModal, createJetski, oldJetski }) => {
           <div className="col-6">
             <label>Price</label>
             <input
-              required
-              name="name"
+              name="price"
               type="number"
-              min="500"
               className="form-control"
+              onChange={handleChange}
+              min="500"
               value={jetski.price}
             />
           </div>

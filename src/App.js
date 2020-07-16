@@ -14,18 +14,7 @@ import NavBar from "./components/NavBar";
 
 import slugify from "react-slugify";
 
-// import { Link } from "react-router-dom";
-
-// import logo from "./logo.png";
-
-import {
-  // Description,
-  // Title,
-  // JetImage,
-  GlobalStyle,
-  // ThemeButton,
-  // Logo,
-} from "./styles";
+import { GlobalStyle } from "./styles";
 
 const theme = {
   dark: {
@@ -49,11 +38,6 @@ function App() {
 
   const [_jetskis, setJetskis] = useState(jetskis);
 
-  // const deleteJetski = (jetskiId) => {
-  //   const updateJestskis = _jetskis.filter((jetski) => jetski.id !== jetskiId);
-  //   setJetskis(updateJestskis);
-  // };
-
   const handleVisible = (jetskiId) => {
     const chosenJetski = jetskis.find((jetski) => jetski.id === jetskiId);
     setJetski(chosenJetski);
@@ -65,41 +49,18 @@ function App() {
   const buttonText = backTheme === "light" ? "Darke Mode" : "Light Mode";
 
   const createJetski = (newJetski) => {
-    // const updatedJetskis = _jetskis;
-    // updatedJetskis.push(newJetski);
-    // setJetskis(updatedJetskis);
     newJetski.id = _jetskis[_jetskis.length - 1].id + 1;
     newJetski.slug = slugify(newJetski.name);
 
     const updatedJetskis = [..._jetskis, newJetski];
     setJetskis(updatedJetskis);
   };
-  // const setView = () =>
-  //   jetski ? (
-  //     <JetskiDetail jetski={jetski} />
-  //   ) : (
-  //     <JetskiList
-  //       jetskis={_jetskis}
-  //       deleteJetski={deleteJetski}
-  //       handleVisible={handleVisible}
-  //     />
-  //   );
 
   return (
     <ThemeProvider theme={theme[backTheme]}>
       <GlobalStyle />
 
       <NavBar handleTheme={handleTheme} buttonText={buttonText} />
-      {/* <Logo to="/">
-        <img src={logo} width="70" />
-      </Logo>
-
-      <Link to="/jetskis" style={{ margin: 20, float: "right" }}>
-        {" "}
-        jetskis
-      </Link>
-
-      <ThemeButton onClick={handleTheme}>{buttonText}</ThemeButton> */}
 
       <Switch>
         <Route path="/jetskis/:jetskiId">
@@ -117,8 +78,6 @@ function App() {
           <Home />
         </Route>
       </Switch>
-
-      {/* {setView()} */}
     </ThemeProvider>
   );
 }
