@@ -32,7 +32,6 @@ class JetskiStore {
   deleteJetski = (jetskiId) => {
     this.jetskis = this.jetskis.filter((jetski) => jetski.id !== jetskiId);
   };
-  // };
 }
 decorate(JetskiStore, {
   jetskis: observable,

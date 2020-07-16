@@ -3,9 +3,11 @@ import React, { useState } from "react";
 import { Route, Switch } from "react-router";
 
 import JetskiDetail from "./components/JetskiDetail";
+
 import JetskiList from "./components/JetskiList";
 
 import jetskis from "./jetskis";
+
 import { ThemeProvider } from "styled-components";
 
 import Home from "./components/Home";

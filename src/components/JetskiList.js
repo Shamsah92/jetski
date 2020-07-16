@@ -6,9 +6,6 @@ import { ListWrap } from "../styles";
 
 import SearchBar from "./SearchBar";
 
-// import { BsPlusCircle } from "react-icons/bs";
-
-// import JetskiModal from "./modals/JetskiModal";
 import AddButton from "./Buttons/AddButton";
 
 import jetskiStore from "../stores/jetskiStore";
