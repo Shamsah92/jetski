@@ -4,8 +4,19 @@ import jetskis from "../jetskis";
 
 import slugify from "react-slugify";
 
+import axios from "axios";
+
 class JetskiStore {
   jetskis = jetskis;
+
+  fetchJetskis = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/jetskis");
+      this.jetskis = response.data;
+    } catch (error) {
+      console.error("JetskiStore -> fetchJetskis -> error", error);
+    }
+  };
 
   createJetski = (newJetski) => {
     newJetski.id = this.jetskis[this.jetskis.length - 1].id + 1;
@@ -38,5 +49,6 @@ decorate(JetskiStore, {
 });
 
 const jetskiStore = new JetskiStore();
+jetskiStore.fetchJetskis();
 
 export default jetskiStore;
