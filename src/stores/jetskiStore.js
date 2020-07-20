@@ -13,8 +13,17 @@ class JetskiStore {
     try {
       const response = await axios.get("http://localhost:8000/jetskis");
       this.jetskis = response.data;
+      console.log("JetskiTore -> fetchJetskis -> res", res);
     } catch (error) {
       console.error("JetskiStore -> fetchJetskis -> error", error);
+    }
+  };
+
+  deleteJetski = async (jetskiId) => {
+    try {
+      await axios.delete(`http://localhost:8000/cookies/${jetskiId}`);
+    } catch (error) {
+      console.log("JetskiStore -> deleteJetski -> error", error);
     }
   };
 
