@@ -5,7 +5,7 @@ import JetskiModal from "../modals/JetskiModal";
 import { BsPlusCircle } from "react-icons/bs";
 
 const AddButton = ({ createJetski }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
   const openModal = () => setIsOpen(true);
