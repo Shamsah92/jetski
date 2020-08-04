@@ -1,18 +1,32 @@
 import React, { useState } from "react";
 
-import { Route, Switch } from "react-router";
+// import { Route, Switch } from "react-router";
 
-import JetskiDetail from "./components/JetskiDetail";
+// import JetskiDetail from "./components/JetskiDetail";
 
-import JetskiList from "./components/JetskiList";
+// import JetskiList from "./components/JetskiList";
 
 import { ThemeProvider } from "styled-components";
 
-import Home from "./components/Home";
+// import Home from "./components/Home";
 
 import NavBar from "./components/NavBar";
 
 import { GlobalStyle } from "./styles";
+// import factoryStore from "./stores/factoryStore";
+// import FactoryList from "./components/FactoryList";
+
+// import FactoryDetail from "./components/FactoryDetail";
+
+// import jetskiStore from "./stores/jetskiStore";
+
+import { observer } from "mobx-react";
+
+import Routes from "./components/Routes";
+
+import factoryStore from "./stores/factoryStore";
+
+import jetskiStore from "./stores/jetskiStore";
 
 const theme = {
   dark: {
@@ -43,20 +57,13 @@ function App() {
 
       <NavBar handleTheme={handleTheme} buttonText={buttonText} />
 
-      <Switch>
-        <Route path="/jetskis/:jetskiId">
-          <JetskiDetail />
-        </Route>
-
-        <Route path="/jetskis">
-          <JetskiList />
-        </Route>
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      {factoryStore.loading || jetskiStore.loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <Routes />
+      )}
     </ThemeProvider>
   );
 }
 
-export default App;
+export default observer(App);

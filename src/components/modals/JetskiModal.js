@@ -16,9 +16,10 @@ const customStyle = {
   },
 };
 
-const JetskiModal = ({ isOpen, closeModal, oldJetski }) => {
+const JetskiModal = ({ factoryId, isOpen, closeModal, oldJetski }) => {
   const [jetski, setJetski] = useState(
     oldJetski || {
+      factoryId,
       name: "",
       price: 0,
       description: "",
@@ -29,6 +30,9 @@ const JetskiModal = ({ isOpen, closeModal, oldJetski }) => {
   const handleChange = (event) => {
     setJetski({ ...jetski, [event.target.name]: event.target.value });
   };
+
+  const handleImage = (event) =>
+    setJetski({ ...jetski, image: event.target.files[0] });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -87,10 +91,9 @@ const JetskiModal = ({ isOpen, closeModal, oldJetski }) => {
           <input
             required
             name="image"
-            type="text"
+            type="file"
             className="form-control"
-            onChange={handleChange}
-            value={jetski.image}
+            onChange={handleImage}
           />
         </div>
         <CreateButtonStyled className="btn float-right">

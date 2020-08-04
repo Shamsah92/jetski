@@ -6,16 +6,16 @@ import { ListWrap } from "../styles";
 
 import SearchBar from "./SearchBar";
 
-import AddButton from "./Buttons/AddButton";
+// import AddButton from "./Buttons/AddButton";
 
-import jetskiStore from "../stores/jetskiStore";
+// import jetskiStore from "../stores/jetskiStore";
 
 import { observer } from "mobx-react";
 
-const JetskiList = ({ createJetski }) => {
+const JetskiList = ({ createJetski, jetskis }) => {
   const [query, setQuery] = useState("");
 
-  const jetskiList = jetskiStore.jetskis
+  const jetskiList = jetskis
     .filter((jetski) => jetski.name.toLowerCase().includes(query.toLowerCase()))
     .map((jetski) => <JetskiItem jetski={jetski} key={jetski.id} />);
 
@@ -24,7 +24,7 @@ const JetskiList = ({ createJetski }) => {
       <SearchBar setQuery={setQuery} />
       <ListWrap className="row">{jetskiList}</ListWrap>
 
-      <AddButton createJetski={createJetski} />
+      {/* <AddButton createJetski={createJetski} /> */}
     </div>
   );
 };

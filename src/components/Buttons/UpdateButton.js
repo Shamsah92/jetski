@@ -4,7 +4,9 @@ import { UpdateButtonStyled } from "../../styles";
 
 import JetskiModal from "../modals/JetskiModal";
 
-const UpdateButton = ({ jetski }) => {
+import FactoryModal from "../modals/FactoryModal";
+
+const UpdateButton = ({ factory, jetski }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -14,7 +16,19 @@ const UpdateButton = ({ jetski }) => {
   return (
     <>
       <UpdateButtonStyled onClick={openModal}>Update</UpdateButtonStyled>
-      <JetskiModal isOpen={isOpen} closeModal={closeModal} oldJetski={jetski} />
+      {factory ? (
+        <FactoryModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          oldFactory={factory}
+        />
+      ) : (
+        <JetskiModal
+          isOpen={isOpen}
+          closeModal={closeModal}
+          oldJetski={jetski}
+        />
+      )}
     </>
   );
 };

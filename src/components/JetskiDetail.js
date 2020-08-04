@@ -7,6 +7,7 @@ import DeleteButton from "./Buttons/DeleteButton";
 import jetskiStore from "../stores/jetskiStore";
 
 import { observer } from "mobx-react";
+import UpdateButton from "./Buttons/UpdateButton";
 
 const JetskiDetail = () => {
   const { jetskiId } = useParams();
@@ -24,7 +25,7 @@ const JetskiDetail = () => {
         <img src={jetski.image} alt={jetski.name} />
         <p>{jetski.description}</p>
         <p>{jetski.price}</p>
-
+        <UpdateButton />
         <DeleteButton jetskiId={jetski.id} />
       </Link>
     </DetailWrap>

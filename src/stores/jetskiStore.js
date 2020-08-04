@@ -4,6 +4,7 @@ import axios from "axios";
 
 class JetskiStore {
   jetskis = [];
+  loading = true;
 
   fetchJetskis = async () => {
     try {
@@ -27,7 +28,12 @@ class JetskiStore {
 
   createJetski = async (newJetski) => {
     try {
-      const res = await axios.post("http://localhost:8000/jetskis", newJetski);
+      const formData = new FormData();
+      for (const key in newJetski) formData.append(key, newJetski[key]);
+      const res = await axios.post(
+        `http://localhost:8000/factories/${newJetski.factoryId}/jetskis`,
+        formData
+      );
       this.jetskis.push(res.data);
     } catch (error) {
       console.log("JetskiStore -> createJetski -> error", error);
@@ -36,9 +42,11 @@ class JetskiStore {
 
   updateJetski = async (updatedJetski) => {
     try {
+      const formData = new FormData();
+      for (const key in updatedJetski) formData.append(key, updatedJetski[key]);
       await axios.put(
         `http://localhost:8000/jetskis/${updatedJetski.id}`,
-        updatedJetski
+        formData
       );
       const jetski = this.jetskis.find(
         (jetski) => jetski.id === updatedJetski.id
@@ -51,6 +59,7 @@ class JetskiStore {
 }
 decorate(JetskiStore, {
   jetskis: observable,
+  loading: observable,
 });
 
 const jetskiStore = new JetskiStore();

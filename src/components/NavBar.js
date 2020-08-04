@@ -15,6 +15,16 @@ const NavBar = (props) => {
           <NavItem
             className="nav-item nav-link"
             href="#"
+            to="/factories"
+            style={{ margin: 20, float: "right" }}
+          >
+            {" "}
+            Factories
+          </NavItem>
+
+          <NavItem
+            className="nav-item nav-link"
+            href="#"
             to="/jetskis"
             style={{ margin: 20, float: "right" }}
           >

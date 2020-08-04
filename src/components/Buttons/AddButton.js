@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import JetskiModal from "../modals/JetskiModal";
 
 import { BsPlusCircle } from "react-icons/bs";
+import FactoryModal from "../modals/FactoryModal";
 
-const AddButton = ({ createJetski }) => {
+const AddButton = ({ factoryId }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => setIsOpen(false);
@@ -13,11 +14,16 @@ const AddButton = ({ createJetski }) => {
   return (
     <div>
       <BsPlusCircle className="float-left" size="10em" onClick={openModal} />
-      <JetskiModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        createJetski={createJetski}
-      />
+
+      {factoryId ? (
+        <JetskiModal
+          factoryId={factoryId}
+          isOpen={isOpen}
+          closeModal={closeModal}
+        />
+      ) : (
+        <FactoryModal isOpen={isOpen} closeModal={closeModal} />
+      )}
     </div>
   );
 };
