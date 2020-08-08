@@ -16,10 +16,9 @@ const customStyle = {
   },
 };
 
-const JetskiModal = ({ factoryId, isOpen, closeModal, oldJetski }) => {
+const JetskiModal = ({ factory, isOpen, closeModal, oldJetski }) => {
   const [jetski, setJetski] = useState(
     oldJetski || {
-      factoryId,
       name: "",
       price: 0,
       description: "",
@@ -37,7 +36,7 @@ const JetskiModal = ({ factoryId, isOpen, closeModal, oldJetski }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    jetskiStore[oldJetski ? "updateJetski" : "createJetski"](jetski);
+    jetskiStore[oldJetski ? "updateJetski" : "createJetski"](jetski, factory);
 
     closeModal();
   };

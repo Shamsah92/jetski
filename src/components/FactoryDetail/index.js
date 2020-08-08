@@ -15,13 +15,19 @@ import { observer } from "mobx-react";
 import { Redirect, useParams } from "react-router-dom";
 import DeleteButton from "../Buttons/DeleteButton";
 
-const FactoryDetail = ({ jetskis }) => {
+import jetskiStore from "../../stores/jetskiStore";
+
+const FactoryDetail = () => {
   const { factorySlug } = useParams();
   const factory = factoryStore.factories.find(
     (_factory) => _factory.slug === factorySlug
   );
 
   if (!factory) return <Redirect to="/factories" />;
+
+  const jetskis = factory.jetskis
+    .map((jetski) => jetskiStore.getJetskiById(jetski.id))
+    .filter((jetski) => jetski);
 
   return (
     <div className="row">
@@ -30,12 +36,12 @@ const FactoryDetail = ({ jetskis }) => {
           <h4>{factory.name}</h4>
           <img src={factory.image} alt={factory.name} />
           <UpdateButton factory={factory} />
+          <DeleteButton factoryId={factory.id} />
         </DetailWrap>
       </div>
       <div className="col-12">
-        <JetskiList jetskis={factory.jetskis} />
-        <AddButton factoryId={factory.id} />
-        <DeleteButton factoryId={factory.id} />
+        <JetskiList jetskis={jetskis} />
+        <AddButton factoryId={factory} />
       </div>
     </div>
   );

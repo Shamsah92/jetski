@@ -16,6 +16,9 @@ class JetskiStore {
     }
   };
 
+  getJetskiById = (jetskiId) =>
+    this.jetskis.find((jetski) => jetski.id === jetskiId);
+
   deleteJetski = async (jetskiId) => {
     console.log(jetskiId);
     try {
@@ -26,15 +29,16 @@ class JetskiStore {
     }
   };
 
-  createJetski = async (newJetski) => {
+  createJetski = async (newJetski, factory) => {
     try {
       const formData = new FormData();
       for (const key in newJetski) formData.append(key, newJetski[key]);
       const res = await axios.post(
-        `http://localhost:8000/factories/${newJetski.factoryId}/jetskis`,
+        `http://localhost:8000/factories/${factory.id}/jetskis`,
         formData
       );
       this.jetskis.push(res.data);
+      factory.jetskis.push({ id: res.data.id });
     } catch (error) {
       console.log("JetskiStore -> createJetski -> error", error);
     }
@@ -52,6 +56,7 @@ class JetskiStore {
         (jetski) => jetski.id === updatedJetski.id
       );
       for (const key in jetski) jetski[key] = updatedJetski[key];
+      URL.createObjectURL(updatedJetski.image);
     } catch (error) {
       console.log("updateJetski", error);
     }

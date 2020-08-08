@@ -12,7 +12,7 @@ import SearchBar from "./SearchBar";
 
 import { observer } from "mobx-react";
 
-const JetskiList = ({ createJetski, jetskis }) => {
+const JetskiList = ({ jetskis = [] }) => {
   const [query, setQuery] = useState("");
 
   const jetskiList = jetskis
