@@ -1,6 +1,6 @@
 import { decorate, observable } from "mobx";
 
-import axios from "axios";
+import instance from "./instance";
 
 class JetskiStore {
   jetskis = [];
@@ -8,7 +8,7 @@ class JetskiStore {
 
   fetchJetskis = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/jetskis");
+      const response = await instance.get("/jetskis");
       this.jetskis = response.data;
       this.loading = false;
       console.log("JetskiTore -> fetchJetskis -> res", response);
@@ -23,7 +23,7 @@ class JetskiStore {
   deleteJetski = async (jetskiId) => {
     console.log(jetskiId);
     try {
-      await axios.delete(`http://localhost:8000/jetskis/${jetskiId}`);
+      await instance.delete(`/jetskis/${jetskiId}`);
       this.jetskis = this.jetskis.filter((jetski) => jetski.id !== jetskiId);
     } catch (error) {
       console.log("JetskiStore -> deleteJetski -> error", error);
@@ -34,8 +34,8 @@ class JetskiStore {
     try {
       const formData = new FormData();
       for (const key in newJetski) formData.append(key, newJetski[key]);
-      const res = await axios.post(
-        `http://localhost:8000/factories/${factory.id}/jetskis`,
+      const res = await instance.post(
+        `/factories/${factory.id}/jetskis`,
         formData
       );
       this.jetskis.push(res.data);
@@ -49,10 +49,7 @@ class JetskiStore {
     try {
       const formData = new FormData();
       for (const key in updatedJetski) formData.append(key, updatedJetski[key]);
-      await axios.put(
-        `http://localhost:8000/jetskis/${updatedJetski.id}`,
-        formData
-      );
+      await instance.put(`/jetskis/${updatedJetski.id}`, formData);
       const jetski = this.jetskis.find(
         (jetski) => jetski.id === updatedJetski.id
       );

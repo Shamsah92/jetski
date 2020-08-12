@@ -15,12 +15,12 @@ const customStyle = {
   },
 };
 
-const SignupModal = ({ isOpen, closeModal }) => {
+const SigninModal = ({ isOpen, closeModal }) => {
   const [user, setUser] = useState({
     username: "",
-    email: "",
-    firstName: "",
-    lastName: "",
+    // email: "",
+    // firstName: "",
+    // lastName: "",
     password: "",
   });
 
@@ -37,7 +37,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.signup(user);
+    authStore.signin(user);
 
     closeModal();
   };
@@ -47,7 +47,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
       isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyle}
-      contentLabel="Signup Modal"
+      contentLabel="Signin Modal"
     >
       <h3>New User</h3>
       <form onSubmit={handleSubmit}>
@@ -63,39 +63,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
             value={user.username}
           />
         </div>
-        <div className="form-group">
-          {/* <div className="col-6"> */}
-          <label>First Name</label>
-          <input
-            name="firstName"
-            type="text"
-            className="form-control"
-            onChange={handleChange}
-            value={user.firstName}
-          />
-        </div>
-        <div className="form-group">
-          {/* <div className="col-6"> */}
-          <label>Last Name</label>
-          <input
-            name="lastName"
-            type="text"
-            className="form-control"
-            onChange={handleChange}
-            value={user.lastName}
-          />
-        </div>
-        <div className="form-group">
-          {/* <div className="col-6"> */}
-          <label>Email</label>
-          <input
-            name="email"
-            type="text"
-            className="form-control"
-            onChange={handleChange}
-            value={user.email}
-          />
-        </div>
+
         <div className="form-group">
           {/* <div className="col-6"> */}
           <label>Password</label>
@@ -110,7 +78,7 @@ const SignupModal = ({ isOpen, closeModal }) => {
         </div>
 
         <CreateButtonStyled className="btn float-right">
-          Sign up
+          Sign in
         </CreateButtonStyled>
       </form>
     </Modal>
