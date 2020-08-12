@@ -3,6 +3,7 @@ import React from "react";
 import logo from "../logo.png";
 
 import { ThemeButton, Logo, NavItem } from "../styles";
+import SignupButton from "./Buttons/SignupButton";
 
 const NavBar = (props) => {
   return (
@@ -31,6 +32,7 @@ const NavBar = (props) => {
             {" "}
             jetskis
           </NavItem>
+          <SignupButton />
 
           <ThemeButton
             className="nav-item nav-link"

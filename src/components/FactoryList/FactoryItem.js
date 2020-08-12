@@ -2,9 +2,9 @@ import React from "react";
 
 // import { Title } from "../../styles";
 
-import FactoryItemImage from "./styles";
+import { FactoryItemImage } from "./styles";
 
-const BakeryItem = ({ factory }) => {
+const FactoryItem = ({ factory }) => {
   return (
     <div>
       <FactoryItemImage src={factory.image} alt={factory.name} />
@@ -12,4 +12,4 @@ const BakeryItem = ({ factory }) => {
   );
 };
 
-export default BakeryItem;
+export default FactoryItem;

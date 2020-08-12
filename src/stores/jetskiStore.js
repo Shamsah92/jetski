@@ -10,6 +10,7 @@ class JetskiStore {
     try {
       const response = await axios.get("http://localhost:8000/jetskis");
       this.jetskis = response.data;
+      this.loading = false;
       console.log("JetskiTore -> fetchJetskis -> res", response);
     } catch (error) {
       console.error("JetskiStore -> fetchJetskis -> error", error);

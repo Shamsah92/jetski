@@ -8,10 +8,10 @@ class FactoryStore {
 
   fetchFactories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/jetskis");
+      const response = await axios.get("http://localhost:8000/factories");
       this.factories = response.data;
       this.loading = false;
-      //   console.log("JetskiTore -> fetchJetskis -> res", response);
+      console.log("JetskiTore -> fetchJetskis -> res", response);
     } catch (error) {
       console.error("FactoryStore -> fetchFactories -> error", error);
     }
