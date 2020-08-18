@@ -1,8 +1,11 @@
 import React from "react";
 
 import { Description, Title, JetImage } from "../styles";
+import authStore from "../stores/authStore";
+import { Redirect } from "react-router";
 
 const Home = () => {
+  if (!authStore.user) return <Redirect to="/signin" />;
   return (
     <>
       <Title> Jet Ski</Title>

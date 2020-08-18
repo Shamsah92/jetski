@@ -85,4 +85,4 @@ const SigninModal = ({ isOpen, closeModal }) => {
   );
 };
 
-export default SignupModal;
+export default SigninModal;

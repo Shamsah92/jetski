@@ -19,18 +19,18 @@ import { observer } from "mobx-react";
 const Routes = () => {
   return (
     <Switch>
-      <Route path="/factories/:factorySlug">
+      <Route exact path="/factories/:factorySlug">
         <FactoryDetail />
       </Route>
-      <Route path="/factories">
+      <Route exact path="/factories">
         <FactoryList />
       </Route>
 
-      <Route path="/jetskis/:jetskiId">
+      <Route exact path="/jetskis/:jetskiId">
         <JetskiDetail />
       </Route>
 
-      <Route path="/jetskis">
+      <Route exact path="/jetskis">
         <JetskiList jetskis={jetskiStore.jetskis} />
       </Route>
       <Route exact path="/">

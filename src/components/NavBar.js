@@ -5,6 +5,8 @@ import logo from "../logo.png";
 import { ThemeButton, Logo, NavItem } from "../styles";
 import SignupButton from "./Buttons/SignupButton";
 import SigninButton from "./Buttons/SigninButton";
+import authStore from "../stores/authStore";
+import { observer } from "mobx-react";
 
 const NavBar = (props) => {
   return (
@@ -14,7 +16,26 @@ const NavBar = (props) => {
       </Logo>
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
-          <NavItem
+          {authStore.user ? (
+            <p>Welcome, {authStore.user.usernamer}</p>
+          ) : (
+            <>
+              <SigninButton />
+              <SignupButton />
+            </>
+          )}
+          {authStore.user?.role === "admin" && (
+            <>
+              <NavItem className="nav-item" to="/factories">
+                Factories
+              </NavItem>
+              <NavItem className="nav-item" to="/jetskis">
+                jetskis
+              </NavItem>
+            </>
+          )}
+
+          {/* <NavItem
             className="nav-item nav-link"
             href="#"
             to="/factories"
@@ -32,9 +53,7 @@ const NavBar = (props) => {
           >
             {" "}
             jetskis
-          </NavItem>
-          <SigninButton />
-          <SignupButton />
+          </NavItem> */}
 
           <ThemeButton
             className="nav-item nav-link"
@@ -49,4 +68,4 @@ const NavBar = (props) => {
   );
 };
 
-export default NavBar;
+export default observer(NavBar);

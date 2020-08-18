@@ -11,8 +11,15 @@ import SearchBar from "../SearchBar";
 
 import AddButton from "../Buttons/AddButton";
 
+import { Redirect } from "react-router";
+
+import authStore from "../../stores/authStore";
+
 const FactoryList = () => {
   const [query, setQuery] = useState("");
+
+  // if (!authStore.user || authStore.user.role !== "admin")
+  //   return <Redirect to="/" />;
 
   const factoryList = factoryStore.factories
     .filter((factory) =>

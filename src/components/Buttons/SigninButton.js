@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AuthButtonStyled } from "./styles";
-import SigninModal from "../modals/SignupModal";
+import SigninModal from "../modals/SigninModal";
 
 const SigninButton = () => {
   const [isOpen, setIsOpen] = useState(false);

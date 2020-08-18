@@ -18,7 +18,7 @@ class AuthStore {
   signin = async (userData) => {
     try {
       const res = await instance.post("/signin", userData);
-      console.log("authStore -> signin -> res.data", res.data);
+      instance.defaults.headers.common.Authorization = `Bearer ${res.data.token}`;
       this.user = decode(res.data.token);
     } catch (error) {
       console.log("AuthStore -> signin -> error", error);

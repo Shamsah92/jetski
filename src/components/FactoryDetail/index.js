@@ -41,7 +41,7 @@ const FactoryDetail = () => {
       </div>
       <div className="col-12">
         <JetskiList jetskis={jetskis} />
-        <AddButton factoryId={factory} />
+        <AddButton factory={factory} />
       </div>
     </div>
   );
