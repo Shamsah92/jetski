@@ -7,6 +7,7 @@ import SignupButton from "./Buttons/SignupButton";
 import SigninButton from "./Buttons/SigninButton";
 import authStore from "../stores/authStore";
 import { observer } from "mobx-react";
+import { IoMdLogOut } from "react-icons/io";
 
 const NavBar = (props) => {
   return (
@@ -17,7 +18,14 @@ const NavBar = (props) => {
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav ml-auto">
           {authStore.user ? (
-            <p>Welcome, {authStore.user.usernamer}</p>
+            <>
+              <p>Welcome, {authStore.user.usernamer}</p>
+              <IoMdLogOut
+                onClick={authStore.signout}
+                size="3em"
+                color="green"
+              />
+            </>
           ) : (
             <>
               <SigninButton />
@@ -34,26 +42,6 @@ const NavBar = (props) => {
               </NavItem>
             </>
           )}
-
-          {/* <NavItem
-            className="nav-item nav-link"
-            href="#"
-            to="/factories"
-            style={{ margin: 20, float: "right" }}
-          >
-            {" "}
-            Factories
-          </NavItem>
-
-          <NavItem
-            className="nav-item nav-link"
-            href="#"
-            to="/jetskis"
-            style={{ margin: 20, float: "right" }}
-          >
-            {" "}
-            jetskis
-          </NavItem> */}
 
           <ThemeButton
             className="nav-item nav-link"
